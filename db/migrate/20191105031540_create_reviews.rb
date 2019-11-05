@@ -8,6 +8,10 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.float :set
       t.float :price
       t.text :write_up
+      t.integer :user_id
+      t.integer :concert_id
+      t.integer :venue_id
+      t.integer :band_id 
 
 
       t.timestamps

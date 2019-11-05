@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+
   namespace :api do
     namespace :v1 do
       resources :users
       resources :concerts
       resources :venues
       resources :reviews
+      resources :locations
       resources :bands
   end
 end
