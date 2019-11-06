@@ -9,4 +9,5 @@ class UserSerializer
     {
       city: user.home.city
     }
+  end
 end
