@@ -1,9 +1,6 @@
 class ConcertSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :date, :opener
-  belongs_to :venue
-  belongs_to :band
-  belongs_to :location
+  attributes :name, :date, :venue, :artist, :opener
   has_many :users
   has_many :reviews
 end

@@ -7,12 +7,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users
+      resources :users do
+        resources :concerts
+        resources :reviews
+      end
       resources :concerts
-      resources :venues
       resources :reviews
-      resources :locations
-      resources :bands
+
   end
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

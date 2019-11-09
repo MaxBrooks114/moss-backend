@@ -12,23 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_11_05_223813) do
 
-  create_table "bands", force: :cascade do |t|
-    t.string "name"
-    t.string "genre"
-    t.boolean "touring"
-    t.date "tour_start"
-    t.date "tour_end"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "concerts", force: :cascade do |t|
     t.string "name"
+    t.string "artist"
+    t.string "venue"
     t.date "date"
     t.boolean "opener"
-    t.integer "venue_id"
-    t.integer "band_id"
-    t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,24 +29,16 @@ ActiveRecord::Schema.define(version: 2019_11_05_223813) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "city"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
-    t.float "score"
-    t.float "venue"
-    t.float "sound"
-    t.float "performance"
-    t.float "set"
+    t.float "final_score"
+    t.float "venue_score"
+    t.float "sound_score"
+    t.float "performance_score"
+    t.float "set_score"
     t.float "price"
     t.text "write_up"
     t.integer "user_id"
     t.integer "concert_id"
-    t.integer "venue_id"
-    t.integer "band_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,17 +47,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_223813) do
     t.string "name"
     t.string "username"
     t.string "password_digest"
-    t.integer "age"
-    t.integer "home_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.integer "location_id"
-    t.string "description"
-    t.string "capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
