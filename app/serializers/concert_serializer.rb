@@ -1,6 +1,14 @@
 class ConcertSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :date, :venue, :artist, :opener
+  attributes :name, :date, :venue, :artist, :opener, :combined_review_score
   has_many :users
-  has_many :reviews
+  attribute :reviews do |concert|
+    concert.reviews.map do |rev|
+      {
+        final_score: rev.final_score,
+        user_id: rev.user_id
+
+      }
+    end
+  end
 end
