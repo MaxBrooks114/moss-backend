@@ -15,12 +15,18 @@ class Api::V1::ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
+    # byebug
+    @review = current_user.reviews.build(review_params)
+    @review.concert = Concert.find(params[:concert_id])
+
 
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json:  ReviewSerializer.new(@review), status: :created
     else
-      render json: @review.errors, status: :unprocessable_entity
+      error_resp = {
+        error: @review.errors.full_messages.to_sentence
+      }
+      render json: error_resp, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +52,6 @@ class Api::V1::ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:score, :venue, :sound, :performance, :set, :price, :write_up)
+      params.require(:review).permit(:venue_score, :sound_score, :performance_score, :set_score, :price, :write_up, :user_id, :concert_id)
     end
 end
