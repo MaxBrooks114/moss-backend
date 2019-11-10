@@ -3,14 +3,22 @@ class Api::V1::ConcertsController < ApplicationController
 
   # GET /concerts
   def index
-    @concerts = Concert.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @concerts = @user.concerts
+      render json: ConcertSerializer.new(@concerts)
+    else
+      @concerts = Concert.all
+      render json: ConcertSerializer.new(@concerts)
+    end
 
-    render json: @concerts
   end
 
   # GET /concerts/1
   def show
-    render json: @concert
+    concert_json = ConcertSerializer.new(@concert).serialized_json
+    @reviews = @concert.reviews
+   render json: concert_json
   end
 
   # POST /concerts
