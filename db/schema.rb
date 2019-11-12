@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_223813) do
+ActiveRecord::Schema.define(version: 2019_11_10_155509) do
 
   create_table "concerts", force: :cascade do |t|
     t.string "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_223813) do
     t.float "sound_score"
     t.float "performance_score"
     t.float "set_score"
-    t.float "price"
+    t.string "price"
     t.text "write_up"
     t.integer "user_id"
     t.integer "concert_id"
