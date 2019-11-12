@@ -15,4 +15,9 @@ class Concert < ApplicationRecord
       return combined_score
   end
 
+  def name
+    "#{self.artist} at #{self.venue} on #{self.date}"
+  end
+
+
 end
