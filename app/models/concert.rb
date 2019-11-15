@@ -2,6 +2,7 @@ class Concert < ApplicationRecord
   has_many :concertsusers
   has_many :users, through: :concertsusers
   has_many :reviews
+  validates :venue, uniqueness: { scope: [:artist, :date]},  :on => :create
 
 
   def combined_review_score
@@ -18,6 +19,7 @@ class Concert < ApplicationRecord
   def name
     "#{self.artist} at #{self.venue} on #{self.date}"
   end
+
 
 
 end
