@@ -1,6 +1,6 @@
 class ReviewSerializer
   include FastJsonapi::ObjectSerializer
-  attributes  :final_score, :venue_score, :sound_score, :performance_score, :set_score, :price
+  attributes  :final_score, :venue_score, :sound_score, :performance_score, :set_score, :price, :write_up
   belongs_to :user, serializer: UserSerializer
   attribute :user do |rev|
     rev.user do |user| {
