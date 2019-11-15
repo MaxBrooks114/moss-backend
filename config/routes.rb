@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :reviews
       resources :users do
         resources :concerts do
         end
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
       resources :concerts do
         resources :reviews
       end
-    resources :reviews
+
 
   end
 end
