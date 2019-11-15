@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.float :sound_score
       t.float :performance_score
       t.float :set_score
-      t.float :price
+      t.string :price
       t.text :write_up
       t.integer :user_id
       t.integer :concert_id
