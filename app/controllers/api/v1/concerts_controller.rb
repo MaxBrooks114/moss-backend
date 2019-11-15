@@ -6,30 +6,32 @@ class Api::V1::ConcertsController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
       @concerts = @user.concerts
-      render json: ConcertSerializer.new(@concerts)
+
     else
       @concerts = Concert.all
-      render json: ConcertSerializer.new(@concerts)
-    end
 
+    end
+    render json: ConcertSerializer.new(@concerts)
   end
 
   # GET /concerts/1
   def show
-    concert_json = ConcertSerializer.new(@concert).serialized_json
-    @reviews = @concert.reviews
-   render json: concert_json
+   @reviews = @concert.reviews
+   render json: ConcertSerializer.new(@concert)
   end
 
   # POST /concerts
   def create
-    @concert = Concert.new(concert_params)
-
+    @concert = Concert.new(concert_params.except(:concert_api_id))
+    @concert.id = params[:concert_api_id]
     if @concert.save
-      render json: @concert, status: :created, location: @concert
-    else
-      render json: @concert.errors, status: :unprocessable_entity
-    end
+        render json: ConcertSerializer.new(@concert)
+      else
+        resp = {
+          error: @concert.errors.full_messages.to_sentence
+        }
+        render json: resp, status: :unprocessable_entity
+      end
   end
 
   # PATCH/PUT /concerts/1
