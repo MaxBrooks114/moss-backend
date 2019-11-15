@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :concerts do
         resources :reviews
       end
+    resources :reviews
 
   end
 end
