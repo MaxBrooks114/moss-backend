@@ -56,6 +56,6 @@ class Api::V1::ConcertsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def concert_params
-      params.require(:concert).permit(:combined_review_score, :artist, :venue, :name, :date, :opener)
+      params.require(:concert).permit(:concert_api_id, :combined_review_score, :artist, :venue, :name, :date, :opener)
     end
 end
