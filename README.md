@@ -1,6 +1,6 @@
 # Moss
 
-Moss is a React app that uses The bandsintown API to find concerts that fans have been to review. Think yelp for concerts.
+Moss is a React app that uses The bandsintown API to find concerts that fans have attended to review. Think yelp for concerts.
 ---
 ## Use it:
 https://moss.herokuapp.com/
